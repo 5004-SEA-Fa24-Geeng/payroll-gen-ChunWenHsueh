@@ -48,9 +48,9 @@ public final class Builder {
         }
 
         if ("HOURLY".equals(employeeType)) {
-            return new HourlyEmployee(employeeName, employeeID, payRate, pretaxDeductions, ytdEarnings, ytdTaxesPaid);
+            return new HourlyEmployee(employeeName, employeeID, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
         } else if ("SALARY".equals(employeeType)) {
-            return new SalaryEmployee(employeeName, employeeID, payRate, pretaxDeductions, ytdEarnings, ytdTaxesPaid);
+            return new SalaryEmployee(employeeName, employeeID, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
         }
         return null;
     }

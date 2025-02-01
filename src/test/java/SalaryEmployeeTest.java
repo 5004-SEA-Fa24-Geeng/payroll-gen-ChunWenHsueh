@@ -15,9 +15,9 @@ public class SalaryEmployeeTest {
                 "Test Salary",
                 "NEU002",
                 new BigDecimal("120000.00"),
-                new BigDecimal("200.00"),
                 new BigDecimal("50000.00"),
-                new BigDecimal("10000.00"));
+                new BigDecimal("10000.00"),
+                new BigDecimal("200.00"));
     }
 
     @Test

@@ -15,9 +15,9 @@ class HourlyEmployeeTest {
                 "Test Employee",
                 "NEU001",
                 new BigDecimal("20.00"),
-                new BigDecimal("0.00"),
                 new BigDecimal("1000.00"),
-                new BigDecimal("200.00"));
+                new BigDecimal("200.00"),
+                new BigDecimal("0.00"));
     }
 
     @Test
