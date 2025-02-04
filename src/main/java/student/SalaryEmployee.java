@@ -14,7 +14,7 @@ public class SalaryEmployee extends AbstractEmployee {
      * Constant used to convert annual salary to hourly rate.
      * The divisor of 24 represents the standard pay periods in a year.
      */
-    private final BigDecimal SALARY_EMPLOYEE_DIVISOR = new BigDecimal(24);
+    private static final BigDecimal SALARY_EMPLOYEE_DIVISOR = new BigDecimal(24);
 
     /**
      * Constructs a new SalaryEmployee with the specified parameters.
@@ -68,7 +68,7 @@ public class SalaryEmployee extends AbstractEmployee {
      */
     @Override
     public BigDecimal calculateGrossPay(double hoursWorked) {
-        BigDecimal hourlyPayRate = payRate.divide(SALARY_EMPLOYEE_DIVISOR, 2,
+        BigDecimal hourlyPayRate = getPayRateBigDecimal().divide(SalaryEmployee.SALARY_EMPLOYEE_DIVISOR, 2,
                 RoundingMode.HALF_UP);
         return hourlyPayRate;
     }

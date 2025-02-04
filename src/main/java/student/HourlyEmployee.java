@@ -78,11 +78,11 @@ public class HourlyEmployee extends AbstractEmployee {
         int overtimeComparison = hoursWorkedBigDecimal.compareTo(HourlyEmployee.OVERTIME_HOUR);
         if (overtimeComparison > 0) {
             BigDecimal overtimeHours = hoursWorkedBigDecimal.subtract(new BigDecimal(40));
-            BigDecimal overtimePayRate = payRate.multiply(HourlyEmployee.OVERTIME_RATE);
-            BigDecimal overtime_salary = overtimeHours.multiply(overtimePayRate);
-            grossPay = payRate.multiply(new BigDecimal(40)).add(overtime_salary);
+            BigDecimal overtimePayRate = getPayRateBigDecimal().multiply(HourlyEmployee.OVERTIME_RATE);
+            BigDecimal overtimeSalary = overtimeHours.multiply(overtimePayRate);
+            grossPay = getPayRateBigDecimal().multiply(new BigDecimal(40)).add(overtimeSalary);
         } else {
-            grossPay = payRate.multiply(hoursWorkedBigDecimal);
+            grossPay = getPayRateBigDecimal().multiply(hoursWorkedBigDecimal);
         }
         return grossPay;
     }

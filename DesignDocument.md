@@ -163,6 +163,7 @@ classDiagram
 
     class HourlyEmployee {
         - BigDecimal OVERTIME_RATE
+        - BigDecimal OVERTIME_HOUR
         + BigDecimal calculateGrossPay(double hoursWorked)
     }
 
@@ -173,17 +174,18 @@ classDiagram
 
     class AbstractEmployee {
         <<Abstract>>
-        # String name
-        # String id
-        # EmployeeType type
-        # BigDecimal payRate
-        # BigDecimal YTDEarnings
-        # BigDecimal YTDTaxesPaid
-        # BigDecimal pretaxDeductions
-        # BigDecimal calculateGrossPay(double hoursWorked)
+        - String name
+        - String id
+        - EmployeeType type
+        - BigDecimal payRate
+        - BigDecimal YTDEarnings
+        - BigDecimal YTDTaxesPaid
+        - BigDecimal pretaxDeductions
+        - BigDecimal calculateGrossPay(double hoursWorked)
         + String getName()
         + String getID()
         + double getPayRate()
+        + BigDecimal getPayRateBigDecimal()
         + String getEmployeeType()
         + double getYTDEarnings()
         + double getYTDTaxesPaid()
@@ -226,6 +228,6 @@ classDiagram
 
 Take time to reflect on how your design has changed. Write in _prose_ (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two.
 
-My design doesn't change much. I changed the type of attributes in the `TimeCard` and `AbstractEmployee` classes from `double` to `BigDecimal` to avoid floating-point arithmetic errors. I also added the `Employee` attribute in the `PayStub` class to store the employee information.
+My design doesn't change much. I changed the type of attributes in the `TimeCard` and `AbstractEmployee` classes from `double` to `BigDecimal` to avoid floating-point arithmetic errors. I also added the `Employee` attribute in the `PayStub` class to store the employee information. I also added few constants in the `HourlyEmployee` and `SalaryEmployee` classes to store the overtime rate, overtime hour, and salary employee divisor.
 
 I think the instructions is a little bit werid. It told us to write a constructor that looks like this `(String name, String id, double payRate, double ytdEarnings, double ytdTaxesPaid, double pretaxDeductions)`, but why should I use this constructor if we're going to do the calculation on `BigDecimal`. Converting between `double` and `BigDecimal` will only make the number less accurate. I think the instruction should be changed to use `BigDecimal` instead of `double`, or do the calculation on `double`.

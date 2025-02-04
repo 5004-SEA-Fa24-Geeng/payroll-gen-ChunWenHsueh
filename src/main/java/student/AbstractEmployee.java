@@ -11,19 +11,19 @@ import java.math.BigDecimal;
  */
 public abstract class AbstractEmployee implements IEmployee {
     /** The name of the employee. */
-    protected String name;
+    private String name;
     /** The unique identifier of the employee. */
-    protected String id;
+    private String id;
     /** The pay rate of the employee (hourly rate or salary). */
-    protected BigDecimal payRate;
+    private BigDecimal payRate;
     /** The pretax deductions amount for the employee. */
-    protected BigDecimal pretaxDeductions;
+    private BigDecimal pretaxDeductions;
     /** The year-to-date earnings of the employee. */
-    protected BigDecimal ytdEarnings;
+    private BigDecimal ytdEarnings;
     /** The year-to-date taxes paid by the employee. */
-    protected BigDecimal ytdTaxesPaid;
+    private BigDecimal ytdTaxesPaid;
     /** The type of employee (HOURLY or SALARY). */
-    protected EmployeeType employeeType;
+    private EmployeeType employeeType;
 
     /**
      * The tax rate used to calculate taxes.
@@ -60,6 +60,13 @@ public abstract class AbstractEmployee implements IEmployee {
     @Override
     public double getPayRate() {
         return payRate.doubleValue();
+    }
+
+    /**
+     * @return The pay rate as a BigDecimal
+     */
+    public BigDecimal getPayRateBigDecimal() {
+        return payRate;
     }
 
     @Override

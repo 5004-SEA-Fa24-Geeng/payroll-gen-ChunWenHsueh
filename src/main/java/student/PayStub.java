@@ -8,11 +8,11 @@ import java.math.BigDecimal;
  * format this information.
  */
 public class PayStub implements IPayStub {
-    /** The employee associated with this pay stub */
+    /** The employee associated with this pay stub. */
     private IEmployee employee;
-    /** The net pay amount after taxes and deductions */
+    /** The net pay amount after taxes and deductions. */
     private BigDecimal netPay;
-    /** The amount of taxes withheld */
+    /** The amount of taxes withheld. */
     private BigDecimal taxes;
 
     /**
