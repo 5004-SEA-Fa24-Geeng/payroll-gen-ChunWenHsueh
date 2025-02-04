@@ -6,8 +6,8 @@ package student;
  * which have different pay calculation methods.
  */
 public enum EmployeeType {
-    /** Represents an employee paid on an hourly basis */
+    /** Represents an employee paid on an hourly basis. */
     HOURLY,
-    /** Represents an employee paid on a salary basis */
+    /** Represents an employee paid on a salary basis. */
     SALARY
 }

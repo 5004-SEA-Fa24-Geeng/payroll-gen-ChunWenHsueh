@@ -13,7 +13,13 @@ public class HourlyEmployee extends AbstractEmployee {
     /**
      * Constant used to calculate overtime pay.
      */
-    private static BigDecimal OVERTIME_RATE = new BigDecimal(1.5);
+    private static final BigDecimal OVERTIME_RATE = new BigDecimal(1.5);
+
+    /**
+     * The number of hours after which overtime pay is applied.
+     * Any hours worked beyond this threshold are considered overtime.
+     */
+    private static final BigDecimal OVERTIME_HOUR = new BigDecimal(40);
 
     /**
      * Constructs a new HourlyEmployee with the specified parameters.
@@ -69,7 +75,7 @@ public class HourlyEmployee extends AbstractEmployee {
     public BigDecimal calculateGrossPay(double hoursWorked) {
         BigDecimal hoursWorkedBigDecimal = new BigDecimal(hoursWorked);
         BigDecimal grossPay;
-        int overtimeComparison = hoursWorkedBigDecimal.compareTo(new BigDecimal(40));
+        int overtimeComparison = hoursWorkedBigDecimal.compareTo(HourlyEmployee.OVERTIME_HOUR);
         if (overtimeComparison > 0) {
             BigDecimal overtimeHours = hoursWorkedBigDecimal.subtract(new BigDecimal(40));
             BigDecimal overtimePayRate = payRate.multiply(HourlyEmployee.OVERTIME_RATE);

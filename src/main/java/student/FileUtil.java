@@ -17,7 +17,8 @@ import java.util.List;
  */
 public final class FileUtil {
     /** header line required when writing out to the employee file. */
-    public static final String EMPLOYEE_HEADER = "employee_type,name,ID,payRate,pretaxDeductions,YTDEarnings,YTDTaxesPaid";
+    public static final String EMPLOYEE_HEADER = "employee_type,name,ID,payRate,pretaxDeductions,"
+            + "YTDEarnings,YTDTaxesPaid";
 
     /** header line required when writing out to the pay stub file. */
     public static final String PAY_STUB_HEADER = "employee_name,net_pay,taxes,ytd_earnings,ytd_taxes_paid";

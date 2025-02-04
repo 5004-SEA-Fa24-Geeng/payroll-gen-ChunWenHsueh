@@ -3,22 +3,32 @@ package student;
 import java.math.BigDecimal;
 
 /**
- * This class is a abstract class that implements the IEmployee interface.
- * It provides the basic functionality for an employee in the payroll system.
+ * This abstract class implements the IEmployee interface and provides base
+ * functionality
+ * for different types of employees in the payroll system. It handles common
+ * operations
+ * such as storing employee information and calculating taxes.
  */
 public abstract class AbstractEmployee implements IEmployee {
+    /** The name of the employee. */
     protected String name;
+    /** The unique identifier of the employee. */
     protected String id;
+    /** The pay rate of the employee (hourly rate or salary). */
     protected BigDecimal payRate;
+    /** The pretax deductions amount for the employee. */
     protected BigDecimal pretaxDeductions;
+    /** The year-to-date earnings of the employee. */
     protected BigDecimal ytdEarnings;
+    /** The year-to-date taxes paid by the employee. */
     protected BigDecimal ytdTaxesPaid;
+    /** The type of employee (HOURLY or SALARY). */
     protected EmployeeType employeeType;
 
     /**
      * The tax rate used to calculate taxes.
      */
-    private static BigDecimal TAX_RATE = new BigDecimal(0.2265);
+    private static final BigDecimal TAX_RATE = new BigDecimal(0.2265);
 
     protected AbstractEmployee(
             String name,

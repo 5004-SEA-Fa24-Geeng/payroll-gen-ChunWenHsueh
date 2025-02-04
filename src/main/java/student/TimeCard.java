@@ -8,9 +8,9 @@ import java.math.BigDecimal;
  * period.
  */
 public class TimeCard implements ITimeCard {
-    /** The ID of the employee associated with this time card */
+    /** The ID of the employee associated with this time card. */
     private String employeeID;
-    /** The number of hours worked in the pay period */
+    /** The number of hours worked in the pay period. */
     private BigDecimal hoursWorked;
 
     /**
