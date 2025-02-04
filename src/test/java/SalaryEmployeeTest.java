@@ -46,7 +46,7 @@ public class SalaryEmployeeTest {
 
     @Test
     void testToCSV() {
-        String expected = "SALARY,Test Salary,NEU002,120000.0,200.0,50000.0,10000.0";
+        String expected = "SALARY,Test Salary,NEU002,120000.00,200.00,50000.00,10000.00";
         assertEquals(expected, employee.toCSV());
     }
 

@@ -1,7 +1,6 @@
 package student;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 /**
  * Represents a pay stub that contains payment information for an employee.
@@ -53,13 +52,12 @@ public class PayStub implements IPayStub {
      */
     @Override
     public String toCSV() {
-        DecimalFormat df = new DecimalFormat("0.0#");
-        return String.format("%s,%s,%s,%s,%s",
+        return String.format("%s,%.2f,%.2f,%.2f,%.2f",
                 employee.getName(),
-                df.format(getPay()),
-                df.format(getTaxesPaid()),
-                df.format(employee.getYTDEarnings()),
-                df.format(employee.getYTDTaxesPaid()));
+                getPay(),
+                getTaxesPaid(),
+                employee.getYTDEarnings(),
+                employee.getYTDTaxesPaid());
     }
 
 }

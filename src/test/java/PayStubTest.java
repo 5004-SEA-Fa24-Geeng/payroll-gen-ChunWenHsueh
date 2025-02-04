@@ -34,7 +34,7 @@ public class PayStubTest {
 
     @Test
     void testToCSV() {
-        String expected = "Test Employee,800.0,200.0,1000.0,200.0";
+        String expected = "Test Employee,800.00,200.00,1000.00,200.00";
         assertEquals(expected, payStub.toCSV());
     }
 }

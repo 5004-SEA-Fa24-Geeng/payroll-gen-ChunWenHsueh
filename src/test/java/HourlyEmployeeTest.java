@@ -46,17 +46,17 @@ class HourlyEmployeeTest {
 
     @Test
     void testToCSV() {
-        String expected = "HOURLY,Test Employee,NEU001,20.0,0.0,1000.0,200.0";
+        String expected = "HOURLY,Test Employee,NEU001,20.00,0.00,1000.00,200.00";
         assertEquals(expected, employee.toCSV());
         employee.runPayroll(40.0);
-        expected = "HOURLY,Test Employee,NEU001,20.0,0.0,1618.8,381.2";
+        expected = "HOURLY,Test Employee,NEU001,20.00,0.00,1618.80,381.20";
         assertEquals(expected, employee.toCSV());
     }
 
     @Test
     void testCalculateGrossPay() {
-        assertEquals(new BigDecimal("800.00"), employee.calculateGrossPay(40.0));
-        assertEquals(new BigDecimal("950.00"), employee.calculateGrossPay(45.0));
+        assertTrue(new BigDecimal("800.00").compareTo(employee.calculateGrossPay(40.0)) == 0);
+        assertTrue(new BigDecimal("950.00").compareTo(employee.calculateGrossPay(45.0)) == 0);
     }
 
     @Test
