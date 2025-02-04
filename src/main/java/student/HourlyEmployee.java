@@ -1,7 +1,6 @@
 package student;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * Represents an hourly employee in the payroll system.
@@ -10,6 +9,12 @@ import java.math.RoundingMode;
  * for employees paid on an hourly basis, including overtime calculations.
  */
 public class HourlyEmployee extends AbstractEmployee {
+
+    /**
+     * Constant used to calculate overtime pay.
+     */
+    private static BigDecimal OVERTIME_RATE = new BigDecimal(1.5);
+
     /**
      * Constructs a new HourlyEmployee with the specified parameters.
      *
@@ -67,12 +72,12 @@ public class HourlyEmployee extends AbstractEmployee {
         int overtimeComparison = hoursWorkedBigDecimal.compareTo(new BigDecimal(40));
         if (overtimeComparison > 0) {
             BigDecimal overtimeHours = hoursWorkedBigDecimal.subtract(new BigDecimal(40));
-            BigDecimal overtimePayRate = payRate.multiply(AbstractEmployee.OVERTIME_RATE);
+            BigDecimal overtimePayRate = payRate.multiply(HourlyEmployee.OVERTIME_RATE);
             BigDecimal overtime_salary = overtimeHours.multiply(overtimePayRate);
             grossPay = payRate.multiply(new BigDecimal(40)).add(overtime_salary);
         } else {
             grossPay = payRate.multiply(hoursWorkedBigDecimal);
         }
-        return grossPay.setScale(2, RoundingMode.HALF_UP);
+        return grossPay;
     }
 }

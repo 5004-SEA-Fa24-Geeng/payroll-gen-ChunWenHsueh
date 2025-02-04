@@ -1,9 +1,11 @@
 package student;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
+/**
+ * This class is a abstract class that implements the IEmployee interface.
+ * It provides the basic functionality for an employee in the payroll system.
+ */
 public abstract class AbstractEmployee implements IEmployee {
     protected String name;
     protected String id;
@@ -13,8 +15,10 @@ public abstract class AbstractEmployee implements IEmployee {
     protected BigDecimal ytdTaxesPaid;
     protected EmployeeType employeeType;
 
+    /**
+     * The tax rate used to calculate taxes.
+     */
     private static BigDecimal TAX_RATE = new BigDecimal(0.2265);
-    protected static BigDecimal OVERTIME_RATE = new BigDecimal(1.5);
 
     protected AbstractEmployee(
             String name,
@@ -76,7 +80,7 @@ public abstract class AbstractEmployee implements IEmployee {
             return null;
         }
         BigDecimal grossPay = calculateGrossPay(hoursWorked);
-        BigDecimal taxes = grossPay.subtract(pretaxDeductions).multiply(TAX_RATE).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal taxes = grossPay.subtract(pretaxDeductions).multiply(TAX_RATE);
         BigDecimal netPay = grossPay.subtract(pretaxDeductions).subtract(taxes);
         ytdEarnings = ytdEarnings.add(netPay);
         ytdTaxesPaid = ytdTaxesPaid.add(taxes);
@@ -85,12 +89,11 @@ public abstract class AbstractEmployee implements IEmployee {
 
     @Override
     public String toCSV() {
-        DecimalFormat df = new DecimalFormat("0.0#");
-        return String.format("%s,%s,%s,%s,%s,%s,%s",
+        return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f",
                 employeeType, name, id,
-                df.format(getPayRate()),
-                df.format(getPretaxDeductions()),
-                df.format(getYTDEarnings()),
-                df.format(getYTDTaxesPaid()));
+                getPayRate(),
+                getPretaxDeductions(),
+                getYTDEarnings(),
+                getYTDTaxesPaid());
     }
 }
